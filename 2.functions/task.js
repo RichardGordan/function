@@ -11,7 +11,7 @@ function getArrayParams(arr) {
       min = arr[i];
     };
     sum =+ arr[i];
-    avg = sum / arr.length
+    avg = `${(sum / arr.length).to fixed(2)}`
   }
 
  
