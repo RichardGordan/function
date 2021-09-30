@@ -30,18 +30,26 @@ for(let i = 0; i < arr.length; i++){
 }
 
 function makeWork(arrOfArr, func) {
-  let max = arrOfArr[0]];
-  worker(arr, (arrOfArr[i] => 
-    for(let i = 0; i < arrOfArr.length; i++){
-      if(arrOfArr[i] > max ){
-        max = arrOfArr[i];
-      }
+  let max = arrOfArr[0];
+  
+  for(let i = 0; i < arrOfArr.length;i++){
+    const sum = func(arrOfArr[i]);
+    if(sum > max){
+      max = sum;
     }
-  
 
+  }
 
-  // Ваш кода
-  // for ...
+ return max
+}
+
+function worker2(arr){
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
+  let res = max - min;
+  if(res < 0){
+    return false
+  }
+  return res
   
-  return max
 }
