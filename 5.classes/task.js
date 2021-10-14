@@ -7,7 +7,7 @@ class PrintEditionItem {
         this.type = null;
     };
     fix (){
-         this.state * 1.5
+         this.state  *= 1.5
     }
 set state(number){
     if(number === 0){
@@ -24,55 +24,37 @@ set state(number){
 
     }
 class Magazine extends PrintEditionItem {
-    constructor(){
-        super(name);
-        super(relaseDate);
-        super(pagesCount);
-        super(state);
+    constructor(name,relaseDate,pagesCount,state,type){
+        super(name,relaseDate,pagesCount,state);
         this.type = 'magazin';
 
     }
 };
 class Book extends PrintEditionItem {
-    constructor(author){
-        super(name);
-        super(relaseDate);
-        super(pagesCount);
-        super(state);
+    constructor(author,name,relaseDate,state,pagesCount,type,){
+        super(name,relaseDate,pagesCount,state);
         this.type = 'books';
         this.author = author;
 
     }
 };
 class NovelBook extends Book {
-    constructor(){
-        super(name);
-        super(relaseDate);
-        super(pagesCount);
-        super(state);
-        super(author)
+    constructor(author,name,relaseDate,pagesCount,state,type){
+        super(author,name,relaseDate,pagesCount,state,);
         this.type = 'novel';
 
     }
 };
 class FantasticBook extends Book {
-    constructor(){
-        super(name);
-        super(relaseDate);
-        super(pagesCount);
-        super(state);
-        super(author)
+    constructor(author,name,relaseDate,pagesCount,state,type){
+        super(name,relaseDate,pagesCount,state,author);
         this.type = 'fantastic';
 
     }
 };
 class DetectiveBook extends Book {
-    constructor(){
-        super(name);
-        super(relaseDate);
-        super(pagesCount);
-        super(state);
-        super(author)
+    constructor(author,name,relaseDate,pagesCount,state,type){
+        super(name,relaseDate,pagesCount,state,author);
         this.type = 'detective';
 
     }
@@ -104,6 +86,7 @@ class Library{
       }
     }
 }
+
 
 class Student{
     #storage;
