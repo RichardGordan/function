@@ -1,7 +1,7 @@
 class PrintEditionItem {
-    constructor(name,relaseDate,pagesCount,state,type){
+    constructor(name,releaseDate,pagesCount){
         this.name = name;
-        this.relaseDate = relaseDate;
+        this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.state = 100;
         this.type = null;
@@ -24,37 +24,37 @@ set state(number){
 
     }
 class Magazine extends PrintEditionItem {
-    constructor(name,relaseDate,pagesCount,state,type){
-        super(name,relaseDate,pagesCount,state);
-        this.type = 'magazin';
+    constructor(name,releaseDate,pagesCount){
+        super(name,releaseDate,pagesCount);
+        this.type = 'magazine';
 
     }
 };
 class Book extends PrintEditionItem {
-    constructor(author,name,relaseDate,state,pagesCount,type,){
-        super(name,relaseDate,pagesCount,state);
-        this.type = 'books';
+    constructor(author,name,releaseDate,pagesCount){
+        super(name,releaseDate,pagesCount);
+        this.type = 'book';
         this.author = author;
 
     }
 };
 class NovelBook extends Book {
-    constructor(author,name,relaseDate,pagesCount,state,type){
-        super(author,name,relaseDate,pagesCount,state,);
+    constructor(author,name,releaseDate,pagesCount){
+        super(author,name,releaseDate,pagesCount);
         this.type = 'novel';
 
     }
 };
 class FantasticBook extends Book {
-    constructor(author,name,relaseDate,pagesCount,state,type){
-        super(name,relaseDate,pagesCount,state,author);
+    constructor(author,name,releaseDate,pagesCount){
+        super(author,name,releaseDate,pagesCount);
         this.type = 'fantastic';
 
     }
 };
 class DetectiveBook extends Book {
-    constructor(author,name,relaseDate,pagesCount,state,type){
-        super(name,relaseDate,pagesCount,state,author);
+    constructor(author,name,releaseDate,pagesCount){
+        super(author,name,releaseDate,pagesCount);
         this.type = 'detective';
 
     }
@@ -73,7 +73,7 @@ class Library{
         }
     }
     findBookBy(type, value){
-        let resultSerach = this.books.find(book => book.type === value );
+        let resultSerach = this.books.find(book => book[type] === value );
         return (typeof resultSerach === 'object') ? resultSerach : null
     }
     giveBookByName(bookName){
