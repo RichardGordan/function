@@ -6,7 +6,7 @@ function parseCount(value) {
         throw new Error('Невалидное значение');
     }
     }
-    parseCount();
+    
     function validateCount(value){
         try{
            return parseCount(value);
@@ -18,7 +18,7 @@ function parseCount(value) {
     class Triangle {
         constructor(a, b, c) {
             if (((a + b) < c) || ((a + c) < b) || ((b + c < a))) {
-                throw new Error('Треугольник с такими сторонами не существует.');
+                throw new Error('Треугольник с такими сторонами не существует');
             }
             this.leftRib = a;
             this.rigthtRib = b;
