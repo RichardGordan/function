@@ -6,41 +6,34 @@ class AlarmClock{
     addClock(time,callback,id){
         if(typeof id === 'undefined'){
             throw new Error('error text');
-        }else if(this.alarmCollection.find(bell => bell.id === id) !== 'undefiend'){
+        }else if(!this.alarmCollection.find(bell => bell.id === id) == 'undefiend'){
             return console.error('Alarm s already standing');
         }
-        return this.alarmCollection.push(time,callback,id);
+        return this.alarmCollection.push({ime,callback,id});
 
     }
     removeClock(id){
-        this.alarmCollection.filter(function(){
-            let repeatedID = this.id;
-            alarmCollection.forEach(bell, i => {
-                if(bell.id === repeatedID){
-                    alarmCollection.splice(i,1);
-                    return true
-                }else{
-                    return false
-                }
-                
-            });
-        })
+        let inpuntLength = this.alarmCollection.length
+        this.alarmCollection = this.alarmCollection.filter(bell => bell.id !== id )
+        let outputLength = this.alarmCollection.length
+        return outputLength < inpuntLength
+
 
         
     }
     getCurrentFormattedTime(){
-        const time = new Date;
-        const HH = time.getHours;
-        const MM = time.getMinutes;
-        return `${HH} : ${MM};`
-        
+        const time = new Date().toLocaleTimeString("ru-Ru", {
+            hour: "2-digit",
+            minute: "2-digit",
+            });
+            return time
 
     }
     start(){
         let checkClock = (clock) => {
             let alarm = this.getCurrentFormattedTime();
             if(clock.time === alarm){
-                return clock.callback
+                return clock.callback()
             }
         }
         if(this.timerId == null){
@@ -50,7 +43,7 @@ class AlarmClock{
             },1000)
             
         }
-        return 
+         
 
     }
     stop(){

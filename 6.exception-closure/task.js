@@ -2,11 +2,11 @@ function parseCount(value) {
     const number = Number.parseInt(value,10);
     if(number){
         return number
-    }else if(isNaN(number) === true){
+    }else {
         throw new Error('Невалидное значение');
     }
     }
-    parseCount(123);
+    parseCount();
     function validateCount(value){
         try{
            return parseCount(value);
@@ -14,36 +14,39 @@ function parseCount(value) {
             return err
         }
     }
-    class Triangle{
-        constructor(a,b,c){
-            if(a + b < c || a + c < b || b + c < a){
+    
+    class Triangle {
+        constructor(a, b, c) {
+            if (((a + b) < c) || ((a + c) < b) || ((b + c < a))) {
                 throw new Error('Треугольник с такими сторонами не существует.');
             }
-            this.a = a;
-            this.b = b;
-            this.c = c;
+            this.leftRib = a;
+            this.rigthtRib = b;
+            this.basicRip = c;
         }
-        getPerimetr(P){
-           this.P = this.a + this.b + this.c;
-            return this.P
+        getPerimeter() {
+            return this.leftRib + this.rigthtRib + this.basicRip;
+    
         }
-        getArea(S){
-            let p = this.getPerimetr / 2;
-             this.S = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3);
-             return this.S
 
-
+        getArea() {
+            const p = this.getPerimeter() / 2;
+            return Number(Math.sqrt(p * (p - this.leftRib) * (p - this.rigthtRib) * (p - this.basicRip)).toFixed(3));
+    
+    
+    
         }
-        }
-    function getTriangle (a,b,c){
+    }
+    
+    function getTriangle(a, b, c) {
         try {
-            return Triangle
-        }catch(err){
-            const missingTringle = {};
-            missingTringle.getArea = () => {return "Ошибка! Треугольник не существует"};
-            missingTringle.getPerimetr = () => {return "Ошибка! Треугольник не существует"};
-            return missingTringle
-           
+            return new Triangle(a, b, c);
+        } catch (err) {
+            const missingTringle = new Object();
+            missingTringle.getArea = function() {return "Ошибка! Треугольник не существует";};
+            missingTringle.getPerimeter = function () {return "Ошибка! Треугольник не существует";};
+            return missingTringle;
+    
         }
-
+    
     }
