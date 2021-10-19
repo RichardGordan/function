@@ -9,7 +9,7 @@ class AlarmClock{
         }else if(!this.alarmCollection.find(bell => bell.id === id) == 'undefiend'){
             return console.error('Alarm s already standing');
         }
-        return this.alarmCollection.push({ime,callback,id});
+        return this.alarmCollection.push({time,callback,id});
 
     }
     removeClock(id){
