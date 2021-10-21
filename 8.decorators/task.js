@@ -1,42 +1,39 @@
 function cachingDecoratorNew(func) {
-  let cashe = [];
+  let cashe = {};
   function wrapper(...args){
     const hash = args.join(',');
-    let idx = cashe.findIndex((id) => hash.id === id);
-    if(idx !== -1){
-      cashe[hash] = result;
-      console.log(`Из кэша ${result} `);
-      return result
+    if(hash in cashe){
+      return 'Из кэша ' + cashe[hash];
+    }else if(Odject.keys(cashe).length === 5){
+     delete cashe[Object.keys(cashe)[0]]; 
+     cashe[hash] = func(...args);
+     return 'Вычисляем' + cashe[hash]
+    }else{
+
+    cahs[hash] = func(...args);
+    return 'Вычисляем' + cashe[hash]
+    
 
     }
-  }
-    let result = func(...args);
-    cashe.push(args);
-      if(cashe.length > 5 ){
-        cashe.shift(0);
-        console.log("Вычисляем: " + result);
-        return "Вычисляем: " + result;
-      }
-      return wrapper
+  };
+  return wrapper
+    
 
 }
 
 
 
-
-
 function debounceDecoratorNew(func) {
-  let timeOut;
-  func(...rest);
   let flag = true;
-return function (...rest){
-  clearTimeout(timeOut);
-  timeOut = setTimeout(() =>{
-    if(!flag){
-      func.call(this,...rest)
-      flag = true
-    }
-  },ms )
+return function (){
+  if(flag){
+    return
+  }
+  func();
+    flag = true;
+    setTimeout(() => {
+      flag = false;
+    }, ms);
 };
 }
 
